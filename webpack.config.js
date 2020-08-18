@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     index: path.resolve(__dirname, "src", "index.ts"),
+    schedulers: path.resolve(__dirname, "src", "schedulers.ts"),
+    tipsAndTricks: path.resolve(__dirname, "src", "tips-n-tricks.ts"),
   },
   output: {
     path: path.resolve(__dirname, "build"),

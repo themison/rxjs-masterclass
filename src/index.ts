@@ -1,5 +1,6 @@
-import { Subject, interval, BehaviorSubject } from "rxjs";
-import { tap, multicast, refCount, share } from "rxjs/operators";
+import { Subject, interval, BehaviorSubject, ReplaySubject, fromEvent, AsyncSubject } from "rxjs";
+import { ajax } from "rxjs/ajax";
+import { tap, multicast, refCount, share, exhaustMap, mergeMapTo, shareReplay } from "rxjs/operators";
 import { loadingService } from "./loading-service";
 import { ObservableStore } from "./store";
 
@@ -47,9 +48,48 @@ const observer = {
 //   subject.subscribe(observer);
 // }, 3000);
 
-const store = new ObservableStore({
-  user: "Brian",
-  isAuth: "false",
-});
+// const store = new ObservableStore({
+//   user: "Brian",
+//   isAuth: "false",
+// });
 
-store.selectState("user").subscribe(console.log);
+// store.selectState("user").subscribe(console.log);
+
+// store.selectState("isAuth").subscribe(console.log);
+
+// store.updateState({ user: "Ilya" });
+
+// store.updateState({ isAuth: "true" });
+
+// const subject = new ReplaySubject(1);
+
+// subject.subscribe(observer);
+
+// subject.next(123);
+
+// subject.next(555);
+
+// subject.subscribe(observer);
+
+// const ajaxCall = () => ajax.getJSON("https://api.github.com/users/themison");
+
+// const click$ = fromEvent(document, "click");
+// const clickRequest$ = click$.pipe(
+//   exhaustMap(() => ajaxCall()),
+//   shareReplay(1, 2000),
+// );
+
+// clickRequest$.subscribe(observer);
+// clickRequest$.subscribe(observer);
+
+// setTimeout(() => clickRequest$.subscribe(observer), 5000);
+
+// const subject = new AsyncSubject();
+
+// subject.subscribe(observer);
+
+// subject.next(123);
+
+// subject.next(555);
+
+// subject.complete();
